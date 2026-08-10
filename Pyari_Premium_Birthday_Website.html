@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>For Pyari ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#080808;color:#f5f2ed;font-family:Inter,sans-serif}
+body{overflow:hidden}.page{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.page.active{opacity:1;pointer-events:auto;transform:none}
+.bg{position:fixed;inset:0;background:radial-gradient(circle at 50% 30%,#211b1b 0,#0b0b0b 42%,#050505 100%);z-index:-2}
+.glow{position:fixed;width:360px;height:360px;border-radius:50%;background:#9a6b5d;filter:blur(120px);opacity:.10;top:5%;left:50%;transform:translateX(-50%);z-index:-1}
+.wrap{width:min(620px,100%);text-align:center}.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#8f8b86;margin-bottom:18px}
+h1,h2{font-family:"Cormorant Garamond",serif;font-weight:500;letter-spacing:-.5px;margin:0}
+h1{font-size:clamp(46px,13vw,82px);line-height:.95}.subtitle{color:#aaa39d;margin:20px 0 35px;line-height:1.7}
+button{font:inherit;color:#f5f2ed;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:14px 28px;cursor:pointer;transition:.25s}
+button:hover{background:rgba(255,255,255,.11);transform:translateY(-2px)}
+.buttons{display:flex;gap:12px;justify-content:center}.yes{background:#f2eee8;color:#111;border-color:#f2eee8}.no{min-width:92px}
+.card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);backdrop-filter:blur(18px);border-radius:24px;padding:30px;box-shadow:0 20px 80px rgba(0,0,0,.3)}
+.code{font-size:30px;letter-spacing:12px;text-align:center;width:100%;margin:20px 0;background:transparent;border:0;border-bottom:1px solid #555;color:#fff;padding:12px;outline:none}
+.error{height:22px;color:#a98b80;font-size:13px}.birthday{font-size:clamp(50px,14vw,92px);line-height:.9}
+.heart{font-size:25px;margin:12px}.letter{text-align:left;line-height:1.9;color:#c8c2bc;font-size:15px;max-height:55vh;overflow:auto;padding-right:5px}
+.letter p{margin:0 0 18px}.signature{font-family:"Cormorant Garamond",serif;font-size:28px;color:#f3eee8}
+.memories{display:grid;gap:12px;margin-top:25px;text-align:left}.memory{padding:20px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.035)}
+.memory b{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:500}.memory span{display:block;color:#8e8983;font-size:13px;margin-top:7px;line-height:1.5}
+.final h2{font-size:clamp(40px,11vw,65px)}.final p{font-family:"Cormorant Garamond",serif;font-size:25px;line-height:1.5;color:#d8d1ca}.tiny{font-size:11px;color:#777;margin-top:28px;letter-spacing:2px}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="glow"></div>
+
+<section class="page active" id="p1"><div class="wrap">
+<div class="eyebrow">01 / Before anything else</div>
+<h1>😠 We Need<br>To Talk.</h1>
+<p class="subtitle">Please don't skip this.</p>
+<button onclick="go(2)">Continue</button>
+</div></section>
+
+<section class="page" id="p2"><div class="wrap card">
+<div class="eyebrow">02 / One question</div>
+<h2 style="font-size:48px">We need to talk.</h2>
+<p class="subtitle">Will you stay for a little while?</p>
+<div class="buttons"><button class="yes" onclick="go(4)">YES</button><button class="no" id="no" onclick="nope()">NO</button></div>
+<p id="noMsg" style="color:#9d8b84;min-height:24px;margin-top:18px"></p>
+</div></section>
+
+<section class="page" id="p3"><div class="wrap">
+<div class="eyebrow">You really clicked it?</div>
+<h2 style="font-size:54px">Why did you click NO? 😠</h2>
+<p class="subtitle">Okay… I'm giving you one more chance.</p>
+<button onclick="go(3.5)">Fine, continue</button>
+</div></section>
+
+<section class="page" id="p35"><div class="wrap card">
+<div class="eyebrow">03 / Something is waiting</div><h2 style="font-size:52px">🔐 A little secret</h2>
+<p class="subtitle">Enter the code.</p>
+<input class="code" id="code" inputmode="numeric" maxlength="4" placeholder="••••">
+<div class="error" id="err"></div>
+<button onclick="unlock()">Unlock</button>
+</div></section>
+
+<section class="page" id="p4"><div class="wrap">
+<div class="eyebrow">For you, Pyari</div><div class="heart">♡</div>
+<h1 class="birthday">Happy Birthday,<br>Pyari ❤️</h1>
+<p class="subtitle">I wanted to give you something that wasn't just a message…<br>something you could keep.</p>
+<button onclick="go(5)">Read what I couldn't say</button>
+</div></section>
+
+<section class="page" id="p5"><div class="wrap card">
+<div class="eyebrow">04 / Everything I mean</div>
+<div class="letter">
+<p>Happy birthday, Pyari. ❤️</p>
+<p>I don't know if a website can ever be enough to explain everything I feel, but I wanted to make something that came from me—not something I simply bought or copied. So if you're reading this, I hope you take your time with it.</p>
+<p>There are so many things I could say about you, but the simplest one is this: I'm genuinely grateful that you became a part of my life. Even with the distance between us, you've managed to become someone whose presence feels close to me in ways I can't properly explain.</p>
+<p>I remember the little things more than the big things. The random conversations. The moments when we stayed longer than we planned. The things you said without realizing I'd remember them. Somehow, those ordinary moments became some of my favourite memories.</p>
+<p>I don't want this birthday to be only about wishing you another year. I want it to remind you that somewhere, someone is quietly thankful that you exist. Someone who notices the little things, cares about your happiness, and hopes you keep becoming the person you want to be.</p>
+<p>I wish I could be there beside you today. Since I can't, I made this instead—a small place where you can come back whenever you want and remember that this was made especially for you.</p>
+<p>No matter how far apart we are, I hope you always remember this: you matter to me. More than a birthday message can fit into words.</p>
+<p>So today, smile a little more. Enjoy your day. Make beautiful memories. And please remember that you are deeply appreciated, cared for, and loved.</p>
+<p>Happy birthday again, Pyari. ❤️</p>
+<p class="signature">— Always, me.</p>
+</div>
+<button onclick="go(6)">Things I Want To Remember →</button>
+</div></section>
+
+<section class="page" id="p6"><div class="wrap">
+<div class="eyebrow">05 / Pages I'd keep forever</div>
+<h2 style="font-size:58px">Things I Want<br>To Remember 📖</h2>
+<div class="memories">
+<div class="memory"><b>The beginning</b><span>How two people, somehow, found each other.</span></div>
+<div class="memory"><b>The little conversations</b><span>The random talks that became memories without us even trying.</span></div>
+<div class="memory"><b>The distance</b><span>Because even when we couldn't be together, you still felt close.</span></div>
+<div class="memory"><b>The future</b><span>The moments we haven't lived yet—and the memories still waiting for us.</span></div>
+</div>
+<button style="margin-top:22px" onclick="go(7)">One last page →</button>
+</div></section>
+
+<section class="page final" id="p7"><div class="wrap">
+<div class="heart">♡</div><h2>If I could give you<br>one thing today…</h2>
+<p>It would be the ability to see yourself through my eyes,<br>so you'd understand just how special you are to me.</p>
+<div class="signature">Happy Birthday, Pyari. ❤️</div>
+<div class="tiny">MADE FOR ONE PERSON ONLY</div>
+</div></section>
+
+<script>
+function pageId(n){return n===3.5?'p35':'p'+n}
+function go(n){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(pageId(n)).classList.add('active')}
+function nope(){document.getElementById('noMsg').textContent='Why did you click NO? 😠';setTimeout(()=>go(3),650)}
+function unlock(){const v=document.getElementById('code').value;if(v==='1923'){go(4)}else{document.getElementById('err').textContent='Wrong code. Try again.'}}
+document.getElementById('code').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()})
+</script>
+</body>
+</html>
